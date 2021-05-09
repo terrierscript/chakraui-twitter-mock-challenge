@@ -68,7 +68,7 @@ const Header = () => {
 }
 
 export const MainPage = () => {
-  const tweets = [...Array(20)].map(item => Math.random())
+  const tweets = useMemo(() => [...Array(20)].map(item => Math.random()), [])
   return <Stack p={0}>
     <Header />
     <TweetFormPost />
