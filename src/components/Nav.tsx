@@ -87,16 +87,13 @@ const NavTweet = () => {
 }
 
 export const Navi: FC<{}> = () => {
-  const x = useBreakpointValue({ base: true, xl: false })
-  const alignItem = useBreakpointValue({ base: "center", xl: "start" })
-  const px = useBreakpointValue({ base: 0, xl: 4 })
 
   return <Stack w={{ base: 20, xl: 300 }} h="100vh" pb={4}
-    alignItems={alignItem} spacing={1} px={px} >
+    alignItems={{ base: "center", xl: "start" }} spacing={1} px={{ base: 0, xl: 4 }} >
     <IconButton
       mx={4}
       my={2}
-      alignSelf={alignItem}
+      alignSelf={{ base: "center", xl: "start" }}
       fontSize="3xl"
 
       aria-label="kiwi" variant="ghost" color={"blue.400"} icon={<Icon as={FaKiwiBird} />}

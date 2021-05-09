@@ -1,4 +1,4 @@
-import { Text, Avatar, Box, Button, HStack, Icon, Spacer, Stack, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, StackDivider, useBreakpointValue, ButtonProps, Portal, forwardRef } from '@chakra-ui/react'
+import { Text, Avatar, Button, HStack, Icon, Spacer, Stack, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, StackDivider, useBreakpointValue, ButtonProps, forwardRef } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import { HiOutlineDotsHorizontal } from "react-icons/hi"
 
@@ -22,35 +22,17 @@ const UserPopoverContent = () => {
 }
 
 const UserButton: FC<ButtonProps> = forwardRef((props, ref) => {
-  // const isCollapse = useBreakpointValue({ base: true, xl: false })
-  // const justifyContent = useBreakpointValue({ base: "center", xl: "start" })
-  // const p = useBreakpointValue({ base: 0, xl: 2 })
-  const responsiveProps = useBreakpointValue<ButtonProps>({
-    base: {
-      justifyContent: "center",
-      p: 0,
-      w: 16,
-      h: 16,
-    },
-    xl: {
-      justifyContent: "start",
-      p: 2,
-      w: "100%",
-      h: "auto"
-    }
-  })
   return <Button
     ref={ref}
-    // justifyContent={justifyContent}
-    // p={p}
-    // w={isCollapse ? 16 : "100%"}
-    // h={isCollapse ? 16 : "auto"}
+    w={{ base: 16, xl: "100%" }}
+    h={{ base: 16, xl: "auto" }}
+    p={{ base: 0, xl: 1 }}
+    justifyContent={{ base: "center", xl: "start" }}
     justifyItems="start"
     fontWeight="normal"
     background={"transparent"}
     _hover={{ bg: "blue.50" }}
-    // variant="outline"
-    {...responsiveProps}
+    _active={{ bg: "blue.50" }}
     {...props}
   />
 })

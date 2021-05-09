@@ -1,9 +1,9 @@
 import { Text, Avatar, Box, Divider, Heading, HStack, Icon, Stack, StackDivider, Spacer, Button, chakra, IconButton } from '@chakra-ui/react'
 import { LoremIpsum } from 'lorem-ipsum'
 import React, { useMemo } from 'react'
-import { FaRegComment, FaRegHeart, FaRetweet, FaShareSquare } from 'react-icons/fa'
+import { FaRegComment, FaRegHeart, FaRetweet } from 'react-icons/fa'
 import { FiShare } from 'react-icons/fi'
-import { HiOutlineChat, HiOutlineDotsHorizontal } from 'react-icons/hi'
+import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { TweetFormPost } from '../TweetForm'
 
 const lorem = new LoremIpsum()
