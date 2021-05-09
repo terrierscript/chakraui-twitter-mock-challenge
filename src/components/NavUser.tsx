@@ -22,19 +22,35 @@ const UserPopoverContent = () => {
 }
 
 const UserButton: FC<ButtonProps> = forwardRef((props, ref) => {
-  const isCollapse = useBreakpointValue({ base: true, xl: false })
-  const justifyContent = useBreakpointValue({ base: "center", xl: "start" })
+  // const isCollapse = useBreakpointValue({ base: true, xl: false })
+  // const justifyContent = useBreakpointValue({ base: "center", xl: "start" })
+  // const p = useBreakpointValue({ base: 0, xl: 2 })
+  const responsiveProps = useBreakpointValue<ButtonProps>({
+    base: {
+      justifyContent: "center",
+      p: 0,
+      w: 16,
+      h: 16,
+    },
+    xl: {
+      justifyContent: "start",
+      p: 2,
+      w: "100%",
+      h: "auto"
+    }
+  })
   return <Button
     ref={ref}
-    justifyContent={justifyContent}
-    p={2}
-    w={"100%"}
-    h={isCollapse ? 16 : "auto"}
+    // justifyContent={justifyContent}
+    // p={p}
+    // w={isCollapse ? 16 : "100%"}
+    // h={isCollapse ? 16 : "auto"}
     justifyItems="start"
     fontWeight="normal"
     background={"transparent"}
     _hover={{ bg: "blue.50" }}
     // variant="outline"
+    {...responsiveProps}
     {...props}
   />
 })
@@ -44,8 +60,8 @@ const UserMenuInner = () => {
   if (isCollapse) {
     return <Avatar size="md" />
   }
-  return <HStack w="100 % " p={2}>
-    < User />
+  return <HStack w="100% " p={2}>
+    <User />
     <Spacer />
     <Text >
       <Icon as={HiOutlineDotsHorizontal} fontSize="sm" />
@@ -55,7 +71,7 @@ const UserMenuInner = () => {
 
 
 export const UserMenu = () => {
-  return <Popover placement={"top"}>
+  return <Popover placement={"top-start"}>
     <PopoverTrigger>
       <UserButton color="black">
         <UserMenuInner />

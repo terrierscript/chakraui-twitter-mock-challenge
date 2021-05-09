@@ -1,9 +1,9 @@
-import { As, Button, ButtonProps, HStack, Icon, Spacer, Stack, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, IconButton, useBreakpointValue, Textarea } from '@chakra-ui/react'
+import { As, Button, ButtonProps, HStack, Icon, Spacer, Stack, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, IconButton, useBreakpointValue } from '@chakra-ui/react'
 
 import React, { FC, useRef } from 'react'
 import { HiHome, HiHashtag, HiOutlineDotsCircleHorizontal, HiOutlineMail, HiBell, HiOutlineUser, HiOutlineBell, HiOutlineHome, HiDotsCircleHorizontal, HiMail, HiUser } from "react-icons/hi"
 import { FaFeatherAlt, FaKiwiBird } from "react-icons/fa"
-import { TweetForm, TweetFormPost, TweetMediaAndSend, TweetTextArea } from './TweetForm'
+import { TweetFormPost } from './TweetForm'
 import { UserMenu } from './NavUser'
 
 const NaviLink: FC<{ isActive: boolean; activeIcon: As<any>; inactiveIcon: As<any>, children: string } & ButtonProps> = ({ isActive, activeIcon, inactiveIcon, ...props }) => {
