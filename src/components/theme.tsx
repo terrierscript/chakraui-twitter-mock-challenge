@@ -25,7 +25,7 @@ const extend: ThemeOverride<ChakraTheme> = {
         ghost: ({ colorScheme }) => {
           return {
             _hover: {
-              color: `${colorScheme}.600`,
+              color: `${colorScheme}.500`,
               bg: `${colorScheme}.100`
             }
           }

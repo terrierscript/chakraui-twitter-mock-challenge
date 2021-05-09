@@ -10,7 +10,7 @@ export const Favicon = () => {
     <svg style={{ display: "none" }} xmlns="http://www.w3.org/2000/svg" ref={(ref) => {
       ref && setIcon(`data:image/svg+xml,${ref.outerHTML}`)
     }}>
-      <text y="32" font-size="32">🦤</text>
+      <text y="32" fontSize="32">🦤</text>
     </svg>
   </div>
 }
