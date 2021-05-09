@@ -33,7 +33,7 @@ const Tweets = () => {
   const commentNum = fmt.format(Math.ceil(Math.random() * 10))
   const rtNum = fmt.format(Math.ceil(Math.random() * 10000))
   const likeNum = fmt.format(Math.ceil(Math.random() * 1000000))
-  return <Stack direction="row" p={4} w={"100%"}>
+  return <Stack direction="row" py={2} px={4} w={"100%"}>
     <Avatar />
     <Stack>
       <HStack p={0} pl={2} w={"100%"} justifyContent="space-between" >

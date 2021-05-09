@@ -57,7 +57,7 @@ export const TweetMediaAndSend: FC<TweetProps> = ({ onClick }) => {
 }
 
 export const TweetFormPost: FC<TweetProps & TweetTextareaProps> = ({ textareaRef, ...props }) => {
-  return <Stack p={4} >
+  return <Stack px={4} py={2} >
     <Stack direction="row">
       <Avatar />
       <Stack divider={<StackDivider color={"gray.400"} />} w={"100%"}>
