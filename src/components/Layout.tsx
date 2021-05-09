@@ -3,11 +3,13 @@ import React, { FC } from 'react'
 import { Navi } from './Nav'
 
 export const Layout: FC<{}> = ({ children }) => <Container maxW="7xl" >
-  <Stack direction="row" divider={<StackDivider />} spacing={0} >
+  <Stack direction="row"
+    divider={<StackDivider h="100vh" bg="red" position="sticky" top="0" />} spacing={0}
+  >
     <Box position="sticky" h={0} alignSelf="start" top="0" bg={"white"} zIndex={"sticky"}>
       <Navi />
     </Box>
-    <Box w={640} h="100vh">
+    <Box w={640} minH="100vh">
       <Box>
         {children}
       </Box>

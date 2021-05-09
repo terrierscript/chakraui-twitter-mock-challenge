@@ -5,8 +5,8 @@ import { TweetFormPost } from '../TweetForm'
 
 const lorem = new LoremIpsum()
 const Dummy = () => {
-  const tweet = useMemo(() => lorem.generateSentences(), [])
-  return <Stack>
+  const tweet = useMemo(() => lorem.generateSentences(2), [])
+  return <Stack direction="row" p={4}>
     <Avatar />
     <Box>{tweet}</Box>
   </Stack>
