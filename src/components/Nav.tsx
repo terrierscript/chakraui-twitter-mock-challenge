@@ -1,9 +1,10 @@
-import { Text, As, Avatar, Box, Button, ButtonProps, HStack, Icon, Spacer, Stack, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, IconButton, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, StackDivider, useBreakpointValue, Textarea } from '@chakra-ui/react'
+import { As, Button, ButtonProps, HStack, Icon, Spacer, Stack, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, IconButton, useBreakpointValue, Textarea } from '@chakra-ui/react'
 
 import React, { FC, useRef } from 'react'
-import { HiHome, HiHashtag, HiOutlineDotsCircleHorizontal, HiOutlineMail, HiBell, HiOutlineUser, HiOutlineBell, HiOutlineHome, HiDotsCircleHorizontal, HiMail, HiUser, HiOutlineDotsHorizontal } from "react-icons/hi"
+import { HiHome, HiHashtag, HiOutlineDotsCircleHorizontal, HiOutlineMail, HiBell, HiOutlineUser, HiOutlineBell, HiOutlineHome, HiDotsCircleHorizontal, HiMail, HiUser } from "react-icons/hi"
 import { FaFeatherAlt, FaKiwiBird } from "react-icons/fa"
 import { TweetForm, TweetFormPost, TweetMediaAndSend, TweetTextArea } from './TweetForm'
+import { UserMenu } from './NavUser'
 
 const NaviLink: FC<{ isActive: boolean; activeIcon: As<any>; inactiveIcon: As<any>, children: string } & ButtonProps> = ({ isActive, activeIcon, inactiveIcon, ...props }) => {
   const isCollapse = useBreakpointValue({ base: true, xl: false })
@@ -47,7 +48,9 @@ const NavTweetButton: FC<ButtonProps> = (props) => {
     />
   }
   return <Button
-    p={6} fontSize="lg"
+    w={"100%"}
+    p={6}
+    fontSize="lg"
     {...props}
   >ツイートする</Button>
 }
@@ -82,77 +85,29 @@ const NavTweet = () => {
     </Modal >
   </>
 }
-const User = () => {
-  return <HStack >
-    <Avatar />
-    <Stack spacing={1} alignItems="self-start">
-      <Text fontWeight="bold">user name</Text>
-      <Text>@user</Text>
-    </Stack>
-  </HStack >
-
-}
-
-const UserMenuPopOver = ({ children }) => {
-  return <Popover>
-    <PopoverTrigger>
-      {children}
-    </PopoverTrigger>
-    <PopoverContent>
-      <PopoverArrow />
-      <PopoverBody p={0} >
-        <Stack spacing={4} py={4} px={4}
-          divider={<StackDivider borderColor="gray.200" />}
-        >
-          <User />
-          <Text>既存のアカウントを追加</Text>
-          <Text>ログアウト</Text>
-        </Stack>
-      </PopoverBody>
-    </PopoverContent>
-  </Popover>
-}
-
-const UserMenu = () => {
-  return <Box py={4}>
-    <UserMenuPopOver>
-      <Button
-        w={"100%"} justifyContent="flex-start"
-        color="black"
-        py={8}
-        variant="ghost"
-        justifyItems="start"
-        fontWeight="normal"
-        background={"transparent"}
-        _hover={{ bg: "blue.50" }}
-      >
-        <HStack w="100%" >
-          <User />
-          <Spacer />
-          <Text><Icon as={HiOutlineDotsHorizontal} /></Text>
-        </HStack>
-      </Button>
-    </UserMenuPopOver>
-  </Box>
-}
 
 export const Navi: FC<{}> = () => {
-  const alignItem = useBreakpointValue({ base: "center", xl: "left" })
+  const x = useBreakpointValue({ base: true, xl: false })
+  const alignItem = useBreakpointValue({ base: "center", xl: "start" })
+  const px = useBreakpointValue({ base: 0, xl: 4 })
 
-  return <Stack w={{ base: 20, xl: 300 }} h="100vh" p={2} alignItems={alignItem}>
-    <Stack h="100vh" spacing={1} px={6}>
-      <IconButton
-        w={12} h={12} p={2} mx={2}
-        aria-label="kiwi" variant="ghost" color={"blue.400"} as={FaKiwiBird} size="sm"
-      />
-      <NaviLink isActive={true} activeIcon={HiHome} inactiveIcon={HiOutlineHome}>ホーム</NaviLink>
-      <NaviLink isActive={false} activeIcon={HiHashtag} inactiveIcon={HiHashtag}>話題の検索</NaviLink>
-      <NaviLink isActive={false} activeIcon={HiBell} inactiveIcon={HiOutlineBell}>通知</NaviLink>
-      <NaviLink isActive={false} activeIcon={HiMail} inactiveIcon={HiOutlineMail}>メッセージ</NaviLink>
-      <NaviLink isActive={false} activeIcon={HiUser} inactiveIcon={HiOutlineUser}>プロフィール</NaviLink>
-      <NaviLink isActive={false} activeIcon={HiDotsCircleHorizontal} inactiveIcon={HiOutlineDotsCircleHorizontal}>もっと見る</NaviLink>
-      <NavTweet />
-    </Stack>
+  return <Stack w={{ base: 20, xl: 300 }} h="100vh" pb={4}
+    alignItems={alignItem} spacing={1} px={px} >
+    <IconButton
+      mx={4}
+      my={2}
+      alignSelf={alignItem}
+      fontSize="3xl"
+
+      aria-label="kiwi" variant="ghost" color={"blue.400"} icon={<Icon as={FaKiwiBird} />}
+    />
+    <NaviLink isActive={true} activeIcon={HiHome} inactiveIcon={HiOutlineHome}>ホーム</NaviLink>
+    <NaviLink isActive={false} activeIcon={HiHashtag} inactiveIcon={HiHashtag}>話題の検索</NaviLink>
+    <NaviLink isActive={false} activeIcon={HiBell} inactiveIcon={HiOutlineBell}>通知</NaviLink>
+    <NaviLink isActive={false} activeIcon={HiMail} inactiveIcon={HiOutlineMail}>メッセージ</NaviLink>
+    <NaviLink isActive={false} activeIcon={HiUser} inactiveIcon={HiOutlineUser}>プロフィール</NaviLink>
+    <NaviLink isActive={false} activeIcon={HiDotsCircleHorizontal} inactiveIcon={HiOutlineDotsCircleHorizontal}>もっと見る</NaviLink>
+    <NavTweet />
     <Spacer />
     <UserMenu />
   </Stack>

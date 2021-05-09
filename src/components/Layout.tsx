@@ -1,6 +1,7 @@
 import { Box, Container, Stack, StackDivider } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import { Navi } from './Nav'
+import { News } from './News'
 
 export const Layout: FC<{}> = ({ children }) => <Container maxW="7xl" >
   <Stack direction="row"
@@ -14,7 +15,8 @@ export const Layout: FC<{}> = ({ children }) => <Container maxW="7xl" >
         {children}
       </Box>
     </Box>
-    <Box bg={"orange.100"} w={{ base: 0, lg: 400 }} maxW={400} h="100vh">
+    <Box w={{ base: 0, lg: 400 }} display={{ base: "none", lg: "block" }} minW={400} h="100vh">
+      <News />
     </Box>
   </Stack>
 </Container>

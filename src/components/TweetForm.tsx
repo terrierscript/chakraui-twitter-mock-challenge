@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, ButtonProps, chakra, forwardRef, HStack, Icon, IconButton, Spacer, Stack, StackDivider, Textarea, TextareaProps } from '@chakra-ui/react'
-import React, { FC, LegacyRef, MouseEventHandler, useState } from 'react'
+import { Avatar, Button, ButtonProps, chakra, HStack, Icon, IconButton, Spacer, Stack, StackDivider, Textarea, TextareaProps } from '@chakra-ui/react'
+import React, { FC, LegacyRef, useState } from 'react'
 import { HiOutlineCalendar, HiOutlineChartBar, HiOutlineEmojiHappy, HiOutlineGlobe, HiOutlinePhotograph } from "react-icons/hi"
 type TweetTextareaProps = TextareaProps & {
   textareaRef?: LegacyRef<any>
@@ -34,14 +34,21 @@ export const TweetForm: FC<TweetTextareaProps> = ({ textareaRef }) => {
 }
 
 type TweetProps = Pick<ButtonProps, "onClick">
+
+const TweetIconButton = chakra(IconButton, {
+  baseStyle: {
+    h: 12,
+    w: 12,
+    p: 2
+  }
+})
+
 export const TweetMediaAndSend: FC<TweetProps> = ({ onClick }) => {
-  return <HStack>
-    <HStack spacing={0}>
-      <IconButton aria-label="image" py={3} size="lg" icon={<Icon as={HiOutlinePhotograph} />} variant="link" />
-      <IconButton aria-label="pole" py={3} size="lg" icon={<Icon as={HiOutlineChartBar} />} variant="link" />
-      <IconButton aria-label="emoji" py={3} size="lg" icon={<Icon as={HiOutlineEmojiHappy} />} variant="link" />
-      <IconButton aria-label="calendar" py={3} size="lg" icon={<Icon as={HiOutlineCalendar} />} variant="link" />
-    </HStack>
+  return <HStack spacing={0}>
+    <TweetIconButton aria-label="image" size="lg" icon={<Icon as={HiOutlinePhotograph} />} variant="link" />
+    <TweetIconButton aria-label="pole" size="lg" icon={<Icon as={HiOutlineChartBar} />} variant="link" />
+    <TweetIconButton aria-label="emoji" size="lg" icon={<Icon as={HiOutlineEmojiHappy} />} variant="link" />
+    <TweetIconButton aria-label="calendar" size="lg" icon={<Icon as={HiOutlineCalendar} />} variant="link" />
     <Spacer />
     <Button colorScheme="blue" onClick={onClick} p={4}>
       ツイートする
